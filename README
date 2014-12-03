@@ -1,1 +1,13 @@
 IsotopeAbundances
+__
+
+A small Python module that consists of a table of stable isotope abundances. Module may easily be imported and accessed via:
+
+import IsotopeAbundances
+table = IsotopeAbundances.table
+
+
+Requires:
+__
+Python
+Pandas (numpy)
