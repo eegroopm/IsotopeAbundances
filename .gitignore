@@ -1,0 +1,9 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Spyder files
+.spyderproject
+
+# C extensions
+*.so
