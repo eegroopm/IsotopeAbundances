@@ -1,5 +1,5 @@
 IsotopeAbundances
-==========
+=================
 
 A small Python module that consists of a table of stable isotope abundances. Module may easily be imported and accessed via:
 
@@ -18,6 +18,6 @@ Name: O, dtype: float64
 
 
 Requires:
--------
+=================
 Python
 Pandas (numpy)
