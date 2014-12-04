@@ -9,14 +9,24 @@ Includes human-readable table created by Frank Stadermann.
 import numpy as np
 import pandas as pd
 import os
-this_dir, this_filename = os.path.split(__file__)
-DATA_PATH = os.path.join(this_dir, "", 'IsotopeAbundances.h5')
-table = pd.read_hdf(DATA_PATH,'table')
+_this_dir, _this_filename = os.path.split(__file__)
+_DATA_PATH = os.path.join(_this_dir, "", 'IsotopeAbundances.h5')
+_EL_PATH = os.path.join(_this_dir, "", 'Elements.h5')
+table = pd.read_hdf(_DATA_PATH,'table')
+elements = pd.read_hdf(_EL_PATH,'table')
 
 def rel_abundance(element,masses=[],ref_mass=None):
     """Return the relative abundance of an isotope or list of isotopes.
-    If ref_mass given, returns the ratio of their abundances."""
-    e = element.capitalize() #capitalize first letter only
+    If ref_mass given, returns the ratio of their abundances.
+    
+    Can enter element as an integer (Z number), Symbol, or Name."""
+    if type(element) == str:
+        element = element.capitalize() #capitalize first letter only
+        index = elements[elements.isin([element])].dropna(how='all').index[0] #return element symbol for feeding into abundance table
+    elif type(element) == int:
+        index = element
+    e = elements.loc[index]['Symbol']
+    
     if masses == []:
         return(table[e].dropna())
         
