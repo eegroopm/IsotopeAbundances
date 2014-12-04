@@ -3,7 +3,8 @@ IsotopeAbundances
 
 A small Python module that consists of a table of stable isotope abundances. Module may easily be imported and accessed via:
 
-import IsotopeAbundances as IA\n
+import IsotopeAbundances as IA  
+
 table = IA.table\n
 
 Calculate relative abundances of isotopes.\n
