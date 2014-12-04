@@ -48,7 +48,7 @@ def rel_abundance(element,masses=[],ref_mass=None):
             abn = abn/ref_abn
             #remake indices
             abn.index = [str(i)+e+'/'+str(ref_mass)+e for i in abn.index]
-    else:
+    elif ref_mass != None:
         print('Please enter an integer reference mass.')
         
     return(abn)
