@@ -21,16 +21,14 @@ def rel_abundance(element,masses=[],ref_mass=None):
     If ref_mass given, returns the ratio of their abundances.
     
     Can enter element as an integer (Z number), Symbol, or Name."""
-    if type(element) == str:
+    if type(element) in [str, np.str_, np.str]:
         element = element.capitalize() #capitalize first letter only
-        print(element)
         index = elements[elements.isin([element])].dropna(how='all').index[0]#return element symbol for feeding into abundance table
-        print(index)
         e = elements.loc[index]['Symbol']
     elif type(element) == int:
         e = elements.loc[element]['Symbol']
     else:
-        raise ValueError('Not a valid element.')
+        raise TypeError('Element of {} type is not valid.\nEnter a str or int.'.format(type(element)))
     
     
     if masses == []:
