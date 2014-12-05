@@ -11,9 +11,10 @@ import pandas as pd
 import os
 _this_dir, _this_filename = os.path.split(__file__)
 _DATA_PATH = os.path.join(_this_dir, "", 'IsotopeAbundances.h5')
-_EL_PATH = os.path.join(_this_dir, "", 'Elements.h5')
+_EL_PATH = os.path.join(_this_dir, "", 'elements.txt')
 table = pd.read_hdf(_DATA_PATH,'table')
-elements = pd.read_hdf(_EL_PATH,'table')
+#elements = pd.read_hdf(_EL_PATH,'table')
+elements = pd.read_csv(_EL_PATH, delimiter=' - ', index_col=0)
 
 def rel_abundance(element,masses=[],ref_mass=None):
     """Return the relative abundance of an isotope or list of isotopes.
