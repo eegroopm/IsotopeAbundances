@@ -23,10 +23,15 @@ def rel_abundance(element,masses=[],ref_mass=None):
     Can enter element as an integer (Z number), Symbol, or Name."""
     if type(element) == str:
         element = element.capitalize() #capitalize first letter only
-        index = elements[elements.isin([element])].dropna(how='all').index[0] #return element symbol for feeding into abundance table
+        print(element)
+        index = elements[elements.isin([element])].dropna(how='all').index[0]#return element symbol for feeding into abundance table
+        print(index)
+        e = elements.loc[index]['Symbol']
     elif type(element) == int:
-        index = element
-    e = elements.loc[index]['Symbol']
+        e = elements.loc[element]['Symbol']
+    else:
+        raise ValueError('Not a valid element.')
+    
     
     if masses == []:
         return(table[e].dropna())
